@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  background: #fafaf7;
+  color: #0b1220;
+}
+
+/* Leaflet's CSS is imported globally so popups, controls, and markers render correctly */
+@import "leaflet/dist/leaflet.css";
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.hh-pin {
+  display: block;
+  position: relative;
+}
+.hh-pin__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: #0f766e;
+  border: 2px solid #fafaf7;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.hh-pin__dot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #5eead4;
+}
+
+.marker-cluster-small {
+  background-color: rgba(20, 184, 166, 0.4) !important;
+}
+.marker-cluster-small div {
+  background-color: rgba(15, 118, 110, 0.85) !important;
+  color: #fff !important;
+}
+.marker-cluster-medium {
+  background-color: rgba(245, 158, 11, 0.4) !important;
+}
+.marker-cluster-medium div {
+  background-color: rgba(180, 83, 9, 0.9) !important;
+  color: #fff !important;
+}
+.marker-cluster-large {
+  background-color: rgba(220, 38, 38, 0.4) !important;
+}
+.marker-cluster-large div {
+  background-color: rgba(153, 27, 27, 0.95) !important;
+  color: #fff !important;
+}
+
+.prose-article h2 {
+  @apply mt-10 text-2xl font-semibold text-ink;
+}
+.prose-article h3 {
+  @apply mt-8 text-xl font-semibold text-ink;
+}
+.prose-article p {
+  @apply mt-4 text-ink-soft leading-relaxed;
+}
+.prose-article ul {
+  @apply mt-4 list-disc pl-6 space-y-1 text-ink-soft;
+}
+.prose-article a {
+  @apply text-brand underline hover:text-brand-dark;
+}
+.prose-article blockquote {
+  @apply mt-4 border-l-4 border-brand-light bg-white p-4 italic text-ink-soft;
+}
