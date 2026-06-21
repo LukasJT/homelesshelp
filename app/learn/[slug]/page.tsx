@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMeta } from "@/lib/articles";
+import { RailedLayout } from "@/components/RailedLayout";
 
 interface Params {
   params: { slug: string };
@@ -24,6 +25,7 @@ export default async function ArticlePage({ params }: Params) {
   const others = getAllArticleMeta().filter((a) => a.slug !== params.slug);
 
   return (
+    <RailedLayout>
     <article className="mx-auto max-w-3xl px-4 py-10">
       <p className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
         <Link href="/learn" className="hover:text-brand">Learn</Link> · {article.category}
@@ -56,5 +58,6 @@ export default async function ArticlePage({ params }: Params) {
         </ul>
       </div>
     </article>
+    </RailedLayout>
   );
 }

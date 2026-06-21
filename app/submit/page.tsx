@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { POPULATION_LABEL, SERVICE_LABEL } from "@/lib/shelters";
+import { RailedLayout } from "@/components/RailedLayout";
 
 const POPULATIONS = Object.entries(POPULATION_LABEL) as [string, string][];
 const SERVICES = Object.entries(SERVICE_LABEL) as [string, string][];
@@ -52,6 +53,7 @@ export default function SubmitPage() {
   }
 
   return (
+    <RailedLayout>
     <section className="mx-auto max-w-3xl px-4 py-10">
       <header>
         <h1 className="text-3xl font-bold text-ink">Submit a resource</h1>
@@ -138,6 +140,7 @@ export default function SubmitPage() {
         </form>
       )}
     </section>
+    </RailedLayout>
   );
 }
 

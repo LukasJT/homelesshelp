@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllShelters } from "@/lib/shelters";
 import { getAllArticleMeta } from "@/lib/articles";
+import { RailedLayout } from "@/components/RailedLayout";
 
 export default function LandingPage() {
   const shelterCount = getAllShelters().length;
@@ -8,7 +9,7 @@ export default function LandingPage() {
   const cities = Array.from(new Set(getAllShelters().map((s) => `${s.city}, ${s.region}`))).length;
 
   return (
-    <>
+    <RailedLayout>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand to-brand-light">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
@@ -113,7 +114,7 @@ export default function LandingPage() {
           Submit a resource
         </Link>
       </section>
-    </>
+    </RailedLayout>
   );
 }
 

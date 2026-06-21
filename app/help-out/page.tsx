@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
   title: "Help out — volunteer, donate, and act",
@@ -150,6 +151,7 @@ const CHARITIES: Record<string, Charity[]> = {
 
 export default function HelpOutPage() {
   return (
+    <RailedLayout>
     <section className="mx-auto max-w-5xl px-4 py-8">
       <header>
         <h1 className="text-3xl font-bold text-ink">How to actually help</h1>
@@ -287,5 +289,6 @@ export default function HelpOutPage() {
         </ul>
       </section>
     </section>
+    </RailedLayout>
   );
 }

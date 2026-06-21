@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
   title: "Get help now — Crisis hotlines and emergency resources",
@@ -173,6 +174,7 @@ const ORDER: Hotline["category"][] = [
 
 export default function GetHelpPage() {
   return (
+    <RailedLayout>
     <section className="mx-auto max-w-5xl px-4 py-8">
       <header className="rounded-xl bg-danger/10 border border-danger/30 p-6">
         <p className="text-xs font-semibold uppercase tracking-wide text-danger">If you're in immediate danger</p>
@@ -242,5 +244,6 @@ export default function GetHelpPage() {
         </p>
       </div>
     </section>
+    </RailedLayout>
   );
 }
