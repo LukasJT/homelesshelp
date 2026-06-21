@@ -111,6 +111,18 @@ export default function ResourcePage({ params }: Params) {
           </a>
         </div>
 
+        <div className="mt-6 rounded-lg bg-accent/10 border border-accent/40 p-4 text-sm">
+          <p className="font-semibold text-amber-900">Want to volunteer here?</p>
+          <p className="mt-1 text-ink-soft">
+            Call ahead to ask what they need this week. Most shelters keep a volunteer
+            coordinator — say "I'd like to volunteer" when you call.{" "}
+            <Link href="/volunteer" className="text-brand underline">
+              See more volunteer options near you
+            </Link>
+            .
+          </p>
+        </div>
+
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {s.hours && (
             <Box label="Hours">

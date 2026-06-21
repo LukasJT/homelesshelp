@@ -31,7 +31,7 @@ export default function LandingPage() {
             <Link href="/get-help" className="rounded-md bg-danger px-5 py-3 font-semibold text-white hover:bg-red-700">
               Get help now
             </Link>
-            <Link href="/help-out" className="rounded-md bg-accent px-5 py-3 font-semibold text-ink hover:bg-amber-400">
+            <Link href="/volunteer" className="rounded-md bg-accent px-5 py-3 font-semibold text-ink hover:bg-amber-400">
               I want to volunteer
             </Link>
             <Link href="/learn" className="rounded-md border border-white/40 px-5 py-3 font-semibold text-white hover:bg-white/10">
@@ -58,10 +58,10 @@ export default function LandingPage() {
             body="Find the nearest shelter, day center, food program, or crisis line. Filter by who the resource serves. Always free, always confidential."
           />
           <PathCard
-            href="/help-out"
+            href="/volunteer"
             title="I want to volunteer or donate"
             color="accent"
-            body="Concrete ways to serve a shift, run a sock drive, or donate to charities that actually work. Includes what shelters need this week (it's not used clothes)."
+            body="Type your city and we'll list shelters near you that accept volunteers. Includes phone numbers and what shelters actually need this week (it's not used clothes)."
           />
           <PathCard
             href="/learn"
@@ -85,21 +85,21 @@ export default function LandingPage() {
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <VolunteerCard
-              title="Serve a shift"
-              body="Most shelters need volunteers for meal prep, intake, and overnight desk shifts. Find one nearby on the map."
-              href="/map"
-              cta="Find a shelter →"
+              title="Find shelters near you"
+              body="Type your city or share your location and we'll list nearby shelters that take volunteers. With phone numbers."
+              href="/volunteer"
+              cta="Find a shelter near me →"
             />
             <VolunteerCard
               title="Run a drive"
               body="Sock drives, hygiene-kit nights, and sleeping-bag collections are easy wins. We have a guide and supply list."
-              href="/help-out"
+              href="/help-out#volunteer"
               cta="Get the playbook →"
             />
             <VolunteerCard
               title="Give effectively"
               body="Cash &gt; new items &gt; used items. We list effective charities by population: veterans, youth, families, LGBTQ+, Indigenous."
-              href="/help-out"
+              href="/help-out#charities"
               cta="See effective charities →"
             />
           </div>
