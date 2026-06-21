@@ -120,3 +120,27 @@ export function distanceKm(a: { lat: number; lng: number }, b: { lat: number; ln
 export function kmToMiles(km: number): number {
   return km * 0.621371;
 }
+
+export function citySlug(s: { city: string; region: string }): string {
+  return (s.city + "-" + s.region)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function unslugCity(slug: string): { city: string; region: string } | null {
+  // Reverse lookup via dataset, since the slug loses some characters.
+  const match = getAllShelters().find((s) => citySlug(s) === slug);
+  if (!match) return null;
+  return { city: match.city, region: match.region };
+}
+
+export function getSheltersInCity(city: string, region: string): Shelter[] {
+  return getAllShelters().filter((s) => s.city === city && s.region === region);
+}
+
+export function getAllCitySlugs(): string[] {
+  const set = new Set<string>();
+  for (const s of getAllShelters()) set.add(citySlug(s));
+  return Array.from(set);
+}
