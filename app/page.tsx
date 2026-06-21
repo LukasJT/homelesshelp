@@ -16,12 +16,13 @@ export default function LandingPage() {
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-light/90">HomelessHelp.net</p>
           <h1 className="mt-3 text-4xl font-bold leading-tight text-white md:text-6xl">
             Find help.<br />
-            Give help.<br />
-            <span className="text-accent">Understand homelessness.</span>
+            <span className="text-accent">Volunteer.</span> Donate.<br />
+            Understand homelessness.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/90">
-            A free, independent directory of shelters and crisis resources across the United States
-            and Canada — paired with plain-language guides on what actually works.
+            Whether you need a bed tonight, want to volunteer at a shelter, or are trying to
+            understand the issue — this is a free, independent directory of homeless services
+            and a plain-language guide to what actually works. US & Canada.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/map" className="rounded-md bg-white px-5 py-3 font-semibold text-brand-dark hover:bg-paper">
@@ -30,8 +31,11 @@ export default function LandingPage() {
             <Link href="/get-help" className="rounded-md bg-danger px-5 py-3 font-semibold text-white hover:bg-red-700">
               Get help now
             </Link>
+            <Link href="/help-out" className="rounded-md bg-accent px-5 py-3 font-semibold text-ink hover:bg-amber-400">
+              I want to volunteer
+            </Link>
             <Link href="/learn" className="rounded-md border border-white/40 px-5 py-3 font-semibold text-white hover:bg-white/10">
-              Learn about homelessness
+              Learn
             </Link>
           </div>
           <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6 text-white">
@@ -44,26 +48,61 @@ export default function LandingPage() {
 
       {/* THREE PATHS */}
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-ink">Pick your path</h2>
+        <h2 className="text-2xl font-bold text-ink">Why are you here?</h2>
+        <p className="mt-1 text-ink-muted">This site serves three audiences equally — pick the one that fits you.</p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <PathCard
             href="/map"
             title="I need help"
             color="brand"
-            body="Find the nearest shelter, day center, food program, or crisis line. Filter by who the resource serves. Always free."
+            body="Find the nearest shelter, day center, food program, or crisis line. Filter by who the resource serves. Always free, always confidential."
           />
           <PathCard
             href="/help-out"
-            title="I want to help"
+            title="I want to volunteer or donate"
             color="accent"
-            body="Concrete, evidence-based ways to volunteer, donate, and act. Includes what shelters actually need (it's probably not used clothes)."
+            body="Concrete ways to serve a shift, run a sock drive, or donate to charities that actually work. Includes what shelters need this week (it's not used clothes)."
           />
           <PathCard
             href="/learn"
-            title="I want to learn"
+            title="I want to understand"
             color="ink"
             body="Plain-language guides on the causes of homelessness, what works to reduce it, and how to talk to someone on the street."
           />
+        </div>
+      </section>
+
+      {/* VOLUNTEER STRIP */}
+      <section className="bg-accent/10 py-14">
+        <div className="mx-auto max-w-5xl px-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-900">For volunteers</p>
+          <h2 className="mt-2 text-3xl font-bold text-ink">
+            Want to actually help? Start here.
+          </h2>
+          <p className="mt-3 max-w-2xl text-ink-soft">
+            People want to help and don't know where to start, so they donate used clothes or hand
+            out granola bars from their car. There's a better playbook — and we've written it.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <VolunteerCard
+              title="Serve a shift"
+              body="Most shelters need volunteers for meal prep, intake, and overnight desk shifts. Find one nearby on the map."
+              href="/map"
+              cta="Find a shelter →"
+            />
+            <VolunteerCard
+              title="Run a drive"
+              body="Sock drives, hygiene-kit nights, and sleeping-bag collections are easy wins. We have a guide and supply list."
+              href="/help-out"
+              cta="Get the playbook →"
+            />
+            <VolunteerCard
+              title="Give effectively"
+              body="Cash &gt; new items &gt; used items. We list effective charities by population: veterans, youth, families, LGBTQ+, Indigenous."
+              href="/help-out"
+              cta="See effective charities →"
+            />
+          </div>
         </div>
       </section>
 
@@ -151,6 +190,22 @@ function PathCard({
       <p className="text-xl font-bold">{title}</p>
       <p className="mt-2 text-sm text-white/90">{body}</p>
       <p className="mt-4 text-sm font-semibold">Go →</p>
+    </Link>
+  );
+}
+
+function VolunteerCard({ title, body, href, cta }: { title: string; body: string; href: string; cta: string }) {
+  return (
+    <Link
+      href={href}
+      className="block rounded-lg border border-amber-200 bg-white p-5 hover:border-accent"
+    >
+      <p className="text-lg font-semibold text-ink">{title}</p>
+      <p
+        className="mt-1 text-sm text-ink-soft"
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+      <p className="mt-3 text-sm font-semibold text-amber-900">{cta}</p>
     </Link>
   );
 }

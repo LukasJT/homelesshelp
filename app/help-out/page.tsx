@@ -2,9 +2,9 @@ import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
-  title: "Help out — volunteer, donate, and act",
+  title: "Volunteer & donate — concrete ways to help",
   description:
-    "Concrete ways to help people experiencing homelessness — what to volunteer for, what to donate, which charities are effective, and what policy actually works.",
+    "How to volunteer at a shelter, what to donate (and what not to), which charities are effective by population served, and how to make political change. US & Canada.",
 };
 
 type Charity = {
@@ -154,15 +154,23 @@ export default function HelpOutPage() {
     <RailedLayout>
     <section className="mx-auto max-w-5xl px-4 py-8">
       <header>
-        <h1 className="text-3xl font-bold text-ink">How to actually help</h1>
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand">For volunteers & donors</p>
+        <h1 className="mt-1 text-3xl font-bold text-ink">How to actually help</h1>
         <p className="mt-2 text-ink-soft">
-          Not everything that feels helpful is. This page is opinionated about what has impact, based
-          on the same research summarized in our{" "}
+          Most people who want to help don't know where to start, so they donate used clothes or
+          hand out granola bars from their car. This page is opinionated about what has impact —
+          based on the same research summarized in our{" "}
           <Link href="/learn" className="text-brand underline">Learn</Link> section.
         </p>
+        <nav className="mt-5 flex flex-wrap gap-2 text-sm">
+          <a href="#volunteer" className="rounded-md bg-brand px-3 py-1.5 font-semibold text-white">I want to volunteer</a>
+          <a href="#donate" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">I want to donate</a>
+          <a href="#charities" className="rounded-md bg-accent px-3 py-1.5 font-semibold text-ink">Effective charities</a>
+          <a href="#political" className="rounded-md border border-brand px-3 py-1.5 font-semibold text-brand">Political action</a>
+        </nav>
       </header>
 
-      <section className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
+      <section id="donate" className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
         <h2 className="text-xl font-semibold text-ink">If you have $20 to give</h2>
         <p className="mt-2 text-ink-soft">
           Give cash to a local organization that provides housing — not stuff, not religious
@@ -176,8 +184,8 @@ export default function HelpOutPage() {
         </p>
       </section>
 
-      <section className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
-        <h2 className="text-xl font-semibold text-ink">If you have a few hours</h2>
+      <section id="volunteer" className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
+        <h2 className="text-xl font-semibold text-ink">If you have a few hours — volunteer</h2>
         <ul className="mt-3 space-y-3 text-ink-soft">
           <li>
             <strong className="text-ink">Serve a shift at a soup kitchen or shelter.</strong> Most need
@@ -201,7 +209,7 @@ export default function HelpOutPage() {
         </ul>
       </section>
 
-      <section className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
+      <section id="give" className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
         <h2 className="text-xl font-semibold text-ink">What to donate (and what not to)</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           <div>
@@ -237,7 +245,7 @@ export default function HelpOutPage() {
         </p>
       </section>
 
-      <section className="mt-10">
+      <section id="charities" className="mt-10">
         <h2 className="text-xl font-semibold text-ink">Effective charities by population</h2>
         <p className="mt-2 text-ink-soft">
           A non-exhaustive starting list of organizations that work at scale and publish outcomes.
@@ -273,7 +281,7 @@ export default function HelpOutPage() {
         </div>
       </section>
 
-      <section className="mt-12 rounded-xl border border-brand-light/60 bg-white p-6">
+      <section id="political" className="mt-12 rounded-xl border border-brand-light/60 bg-white p-6">
         <h2 className="text-xl font-semibold text-ink">If you have political energy</h2>
         <p className="mt-2 text-ink-soft">
           The single largest lever on homelessness is the housing supply. Most of the variance between

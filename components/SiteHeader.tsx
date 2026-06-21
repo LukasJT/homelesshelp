@@ -3,8 +3,8 @@ import Link from "next/link";
 const links = [
   { href: "/map", label: "Find Resources" },
   { href: "/get-help", label: "Get Help Now" },
+  { href: "/help-out", label: "Volunteer & Donate" },
   { href: "/learn", label: "Learn" },
-  { href: "/help-out", label: "Help Out" },
   { href: "/submit", label: "Submit a Resource" },
 ];
 

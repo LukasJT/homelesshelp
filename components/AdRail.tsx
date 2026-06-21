@@ -32,7 +32,8 @@ function AdSlot({ id, label = "Advertisement", height = 600, sticky, children }:
 }
 
 export function AdRail({ side }: { side: "left" | "right" }) {
-  const enabled = process.env.NEXT_PUBLIC_AD_SLOTS_ENABLED !== "false";
+  // Off by default. Set NEXT_PUBLIC_AD_SLOTS_ENABLED=true in env to show rails.
+  const enabled = process.env.NEXT_PUBLIC_AD_SLOTS_ENABLED === "true";
   if (!enabled) return null;
   return (
     <aside

@@ -5,16 +5,16 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: {
-    default: "HomelessHelp — Find help. Give help. Understand homelessness.",
+    default: "HomelessHelp — Find shelters. Volunteer. Understand homelessness.",
     template: "%s — HomelessHelp",
   },
   description:
-    "A directory of shelters and crisis resources across the US and Canada, plus guides on how to help and learn about homelessness.",
+    "Free directory of homeless shelters and crisis resources across the US and Canada — plus a volunteer guide, donation playbook, and plain-language education on what works.",
   metadataBase: new URL("https://homelesshelp.net"),
   openGraph: {
     title: "HomelessHelp",
     description:
-      "Find shelters, crisis hotlines, and ways to help people experiencing homelessness.",
+      "Find shelters and crisis hotlines, or learn how to volunteer and donate effectively to help people experiencing homelessness.",
     url: "https://homelesshelp.net",
     siteName: "HomelessHelp",
     locale: "en_US",
