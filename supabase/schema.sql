@@ -23,6 +23,14 @@ create table if not exists public.shelters (
   updated_at timestamptz not null default now()
 );
 
+-- Service taxonomy (informational; not enforced as a check constraint so the
+-- list can grow without migrations):
+--   emergency-shelter, transitional-housing, permanent-housing,
+--   supportive-housing, meals, food-pantry, day-services, showers, laundry,
+--   mail, clothing, case-management, addiction-recovery, harm-reduction,
+--   mental-health, medical, healthcare, legal, education, job-training,
+--   ESL, childcare, outreach
+
 create index if not exists shelters_lat_lng_idx on public.shelters (lat, lng);
 create index if not exists shelters_country_region_idx on public.shelters (country, region);
 

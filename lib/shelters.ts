@@ -18,6 +18,7 @@ export type Service =
   | "permanent-housing"
   | "supportive-housing"
   | "meals"
+  | "food-pantry"
   | "day-services"
   | "showers"
   | "laundry"
@@ -72,6 +73,7 @@ export const SERVICE_LABEL: Record<Service, string> = {
   "permanent-housing": "Permanent housing",
   "supportive-housing": "Supportive housing",
   meals: "Meals",
+  "food-pantry": "Food pantry",
   "day-services": "Day services",
   showers: "Showers",
   laundry: "Laundry",
