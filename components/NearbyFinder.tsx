@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   distanceKm,
@@ -13,7 +13,20 @@ import {
 
 type Origin = { lat: number; lng: number; label: string };
 
-// Services that translate to a clear volunteer ask
+interface Props {
+  shelters: Shelter[];
+  mode: "help" | "volunteer";
+}
+
+const HELP_PRIORITY: Service[] = [
+  "emergency-shelter",
+  "day-services",
+  "meals",
+  "food-pantry",
+  "medical",
+  "harm-reduction",
+];
+
 const VOLUNTEER_HINTS: Partial<Record<Service, string>> = {
   meals: "Serve a meal shift",
   "food-pantry": "Sort & distribute food",
@@ -27,26 +40,20 @@ const VOLUNTEER_HINTS: Partial<Record<Service, string>> = {
 };
 
 function volunteerActions(s: Shelter): string[] {
-  const actions: string[] = [];
+  const out: string[] = [];
   for (const sv of s.services) {
     const hint = VOLUNTEER_HINTS[sv];
-    if (hint && !actions.includes(hint)) actions.push(hint);
+    if (hint && !out.includes(hint)) out.push(hint);
   }
-  return actions.length > 0 ? actions : ["Ask what they need this week"];
+  return out.length > 0 ? out : ["Ask what they need this week"];
 }
 
-export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
+export default function NearbyFinder({ shelters, mode }: Props) {
   const [query, setQuery] = useState("");
   const [searching, setSearching] = useState(false);
   const [origin, setOrigin] = useState<Origin | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [radius, setRadius] = useState<25 | 50 | 100>(50);
-
-  // Auto-geolocate on mount, but only with explicit permission grant.
-  // We do NOT prompt aggressively — the user can also type a city.
-  useEffect(() => {
-    // No-op; only triggered by button click.
-  }, []);
+  const [radius, setRadius] = useState<25 | 50 | 100>(mode === "help" ? 25 : 50);
 
   function useMyLocation() {
     setError(null);
@@ -58,7 +65,6 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
         try {
-          // Reverse-geocode for a nicer label.
           const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&zoom=10`;
           const r = await fetch(url, { headers: { Accept: "application/json" } });
           const j = await r.json();
@@ -118,29 +124,21 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
 
   const ranked = useMemo(() => {
     if (!origin) return [] as Array<{ s: Shelter; km: number }>;
-    return shelters
+    let pool = shelters;
+    if (mode === "help") {
+      pool = pool.filter((s) =>
+        s.services.some((sv) => HELP_PRIORITY.includes(sv)),
+      );
+    }
+    return pool
       .map((s) => ({ s, km: distanceKm(origin, s) }))
-      .filter((x) => x.km <= radius * 1.60934) // miles to km
+      .filter((x) => x.km <= radius * 1.60934)
       .sort((a, b) => a.km - b.km)
       .slice(0, 30);
-  }, [origin, shelters, radius]);
+  }, [origin, shelters, radius, mode]);
 
   return (
-    <section className="mx-auto max-w-5xl px-4 py-8">
-      <header>
-        <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-          Volunteer
-        </p>
-        <h1 className="mt-1 text-3xl font-bold text-ink">
-          Find a place to volunteer near you
-        </h1>
-        <p className="mt-2 max-w-2xl text-ink-soft">
-          Enter your city or zip — or share your location — and we'll list shelters and resources
-          near you that accept volunteers. Each one has a phone number and website: call ahead to
-          ask about their current volunteer needs.
-        </p>
-      </header>
-
+    <>
       <div className="mt-6 rounded-xl border border-brand-light/60 bg-white p-5">
         <form onSubmit={searchByText} className="flex flex-wrap gap-2">
           <input
@@ -152,15 +150,21 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
           <button
             type="submit"
             disabled={searching}
-            className="rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
+            className={
+              "rounded-md px-4 py-2 text-sm font-semibold text-white disabled:opacity-50 " +
+              (mode === "help" ? "bg-danger" : "bg-brand")
+            }
           >
-            {searching ? "Searching…" : "Find places"}
+            {searching ? "Searching…" : mode === "help" ? "Find help" : "Find places"}
           </button>
           <button
             type="button"
             onClick={useMyLocation}
             disabled={searching}
-            className="rounded-md border border-brand px-4 py-2 text-sm font-semibold text-brand disabled:opacity-50"
+            className={
+              "rounded-md border px-4 py-2 text-sm font-semibold disabled:opacity-50 " +
+              (mode === "help" ? "border-danger text-danger" : "border-brand text-brand")
+            }
           >
             Use my location
           </button>
@@ -198,20 +202,17 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
         <div className="mt-4 rounded-lg border border-brand-light/60 bg-white p-6">
           <p className="font-medium text-ink">No resources found within {radius} mi.</p>
           <p className="mt-2 text-sm text-ink-soft">
-            Try expanding the radius, or contact a national charity directly — they often need
-            remote volunteers (mailings, phone banking, translation). See our{" "}
-            <Link href="/help-out#charities" className="text-brand underline">
-              effective charities list
-            </Link>{" "}
-            for ideas.
+            {mode === "help"
+              ? "Try expanding the radius. If you're in immediate need, call 211 from a local phone — they keep live shelter availability for every region."
+              : "Try expanding the radius, or contact a national charity directly. See the Help Out page."}
           </p>
         </div>
       )}
 
       <ul className="mt-4 grid gap-4 md:grid-cols-2">
         {ranked.map(({ s, km }) => {
-          const actions = volunteerActions(s);
           const phoneDigits = s.phone?.replace(/[^0-9+]/g, "");
+          const actions = mode === "volunteer" ? volunteerActions(s) : null;
           return (
             <li key={s.id}>
               <article className="h-full rounded-lg border border-brand-light/60 bg-white p-5">
@@ -224,33 +225,55 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
                 <p className="mt-1 text-sm text-ink-muted">
                   {s.address}, {s.city}, {s.region}
                 </p>
+                {s.hours && <p className="mt-1 text-xs text-ink-muted">{s.hours}</p>}
+
+                {mode === "help" && (
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {s.services
+                      .filter((sv) => HELP_PRIORITY.includes(sv))
+                      .slice(0, 4)
+                      .map((sv) => (
+                        <span
+                          key={sv}
+                          className="rounded bg-brand-light/40 px-1.5 py-0.5 text-[11px] font-medium text-brand-dark"
+                        >
+                          {SERVICE_LABEL[sv]}
+                        </span>
+                      ))}
+                  </div>
+                )}
+
+                {mode === "volunteer" && actions && (
+                  <div className="mt-4 rounded-md bg-accent/10 p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-amber-900">
+                      Ways you might help
+                    </p>
+                    <ul className="mt-1 space-y-0.5 text-sm text-ink-soft">
+                      {actions.slice(0, 4).map((a) => (
+                        <li key={a}>• {a}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="mt-3 flex flex-wrap gap-1">
                   {s.populationsServed.slice(0, 3).map((p) => (
-                    <span key={p} className="rounded bg-brand-light/40 px-1.5 py-0.5 text-[10px] text-brand-dark">
-                      Serves {POPULATION_LABEL[p].toLowerCase()}
+                    <span key={p} className="rounded bg-paper px-1.5 py-0.5 text-[10px] text-ink-muted">
+                      {mode === "volunteer" ? `Serves ${POPULATION_LABEL[p].toLowerCase()}` : POPULATION_LABEL[p]}
                     </span>
                   ))}
-                </div>
-
-                <div className="mt-4 rounded-md bg-accent/10 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-amber-900">
-                    Ways you might help
-                  </p>
-                  <ul className="mt-1 space-y-0.5 text-sm text-ink-soft">
-                    {actions.slice(0, 4).map((a) => (
-                      <li key={a}>• {a}</li>
-                    ))}
-                  </ul>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {phoneDigits && (
                     <a
                       href={`tel:${phoneDigits}`}
-                      className="rounded-md bg-brand px-3 py-2 text-xs font-semibold text-white"
+                      className={
+                        "rounded-md px-3 py-2 text-xs font-semibold text-white " +
+                        (mode === "help" ? "bg-danger" : "bg-brand")
+                      }
                     >
-                      Call to ask: {s.phone}
+                      {mode === "help" ? `Call ${s.phone}` : `Call to ask: ${s.phone}`}
                     </a>
                   )}
                   {s.website && (
@@ -260,7 +283,7 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
                       rel="noreferrer"
                       className="rounded-md border border-brand px-3 py-2 text-xs font-semibold text-brand"
                     >
-                      Volunteer page ↗
+                      Website ↗
                     </a>
                   )}
                   <Link
@@ -275,35 +298,6 @@ export default function VolunteerFinder({ shelters }: { shelters: Shelter[] }) {
           );
         })}
       </ul>
-
-      {!origin && (
-        <div className="mt-10 rounded-lg bg-white p-6 border border-brand-light/60">
-          <h2 className="text-lg font-semibold text-ink">Before you call</h2>
-          <ul className="mt-3 space-y-2 text-sm text-ink-soft">
-            <li>
-              <strong className="text-ink">Ask what they need <em>this week</em></strong> — not what they
-              need in general. Volunteer needs shift constantly. They might need a meal-shift filler
-              tonight, mock-interviewers next Tuesday, or just a sock drive any time.
-            </li>
-            <li>
-              <strong className="text-ink">Commit to a time, not "whenever I'm free"</strong> — shelters get
-              flaky one-time volunteers all day. Showing up on the same shift weekly for a month is
-              worth more than ten one-off visits.
-            </li>
-            <li>
-              <strong className="text-ink">Don't bring stuff they didn't ask for</strong> — used clothes
-              are the most-donated and least-needed item in almost every shelter. Cash, new socks,
-              and hygiene supplies are usually what they actually want. See our{" "}
-              <Link href="/help-out#give" className="text-brand underline">donation guide</Link>.
-            </li>
-            <li>
-              <strong className="text-ink">Be flexible about what "volunteering" means</strong> — for
-              some shelters the best help is administrative (translation, grant writing, IT). Ask
-              what their biggest unmet need is, not just whether they need meal servers.
-            </li>
-          </ul>
-        </div>
-      )}
-    </section>
+    </>
   );
 }

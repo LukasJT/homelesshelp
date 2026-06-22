@@ -25,11 +25,11 @@ export default function LandingPage() {
             and a plain-language guide to what actually works. US & Canada.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/map" className="rounded-md bg-white px-5 py-3 font-semibold text-brand-dark hover:bg-paper">
-              Find resources near you →
+            <Link href="/find-help" className="rounded-md bg-white px-5 py-3 font-semibold text-brand-dark hover:bg-paper">
+              Find help near you →
             </Link>
             <Link href="/get-help" className="rounded-md bg-danger px-5 py-3 font-semibold text-white hover:bg-red-700">
-              Get help now
+              Crisis hotlines
             </Link>
             <Link href="/volunteer" className="rounded-md bg-accent px-5 py-3 font-semibold text-ink hover:bg-amber-400">
               I want to volunteer
@@ -52,10 +52,10 @@ export default function LandingPage() {
         <p className="mt-1 text-ink-muted">This site serves three audiences equally — pick the one that fits you.</p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <PathCard
-            href="/map"
+            href="/find-help"
             title="I need help"
             color="brand"
-            body="Find the nearest shelter, day center, food program, or crisis line. Filter by who the resource serves. Always free, always confidential."
+            body="Enter your city and we'll show the nearest shelters, day centers, food programs, and medical care. Always free, no account required."
           />
           <PathCard
             href="/volunteer"

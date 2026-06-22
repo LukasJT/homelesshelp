@@ -190,7 +190,12 @@ export default function HelpOutPage() {
 
       <section id="donate" className="mt-10 rounded-xl border border-brand-light/60 bg-white p-6">
         <h2 className="text-xl font-semibold text-ink">If you have $20 to give</h2>
-        <p className="mt-2 text-ink-soft">
+        <p className="mt-2 rounded-md bg-brand-light/30 px-3 py-2 text-sm text-ink-soft">
+          <strong className="text-ink">Heads up:</strong> HomelessHelp.net does not accept donations.
+          Every link below sends you directly to the charity's own donation page. We don't process
+          money, take a cut, or hold funds in transit.
+        </p>
+        <p className="mt-4 text-ink-soft">
           Give cash to a local organization that provides housing — not stuff, not religious
           counseling, not "transitional" programs that gatekeep on sobriety. National charities are
           fine; small, local Housing First providers are often <em>more</em> effective dollar-for-dollar

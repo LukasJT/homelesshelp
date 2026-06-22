@@ -30,11 +30,15 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="text-sm font-semibold text-ink">About</p>
+          <ul className="mt-2 mb-2 space-y-1 text-sm text-ink-soft">
+            <li><Link href="/about" className="hover:text-brand">About us</Link></li>
+          </ul>
           <p className="mt-2 text-xs text-ink-muted leading-relaxed">
-            HomelessHelp is not affiliated with any government agency, shelter, or charity.
-            Information is provided as a public resource and may be out of date — always call
-            ahead before traveling to a shelter. If you spot inaccurate information, please use
-            the Submit page to flag it.
+            HomelessHelp is not affiliated with any government agency, shelter, or charity, and
+            does not accept donations or process money. Every charity listed on this site
+            receives donations directly through its own channels. Information here is provided
+            as a public resource and may be out of date — always call ahead before traveling to
+            a shelter. If you spot inaccurate information, please use the Submit page to flag it.
           </p>
         </div>
       </div>
