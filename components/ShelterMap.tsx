@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
@@ -44,6 +45,7 @@ const FILTERS: { key: Filter; label: string }[] = [
 
 export default function ShelterMap({ shelters }: { shelters: Shelter[] }) {
   const [query, setQuery] = useState("");
+  const [nameQuery, setNameQuery] = useState("");
   const [searching, setSearching] = useState(false);
   const [origin, setOrigin] = useState<{ lat: number; lng: number; label: string } | null>(null);
   const [filter, setFilter] = useState<Filter>("any");
@@ -51,9 +53,23 @@ export default function ShelterMap({ shelters }: { shelters: Shelter[] }) {
   const markerRefs = useRef<Record<string, L.Marker | null>>({});
 
   const filtered = useMemo(() => {
-    if (filter === "any") return shelters;
-    return shelters.filter((s) => s.populationsServed.includes(filter) || s.populationsServed.includes("all"));
-  }, [shelters, filter]);
+    let list = shelters;
+    if (filter !== "any") {
+      list = list.filter(
+        (s) => s.populationsServed.includes(filter) || s.populationsServed.includes("all"),
+      );
+    }
+    if (nameQuery.trim()) {
+      const q = nameQuery.trim().toLowerCase();
+      list = list.filter(
+        (s) =>
+          s.name.toLowerCase().includes(q) ||
+          s.city.toLowerCase().includes(q) ||
+          s.address.toLowerCase().includes(q),
+      );
+    }
+    return list;
+  }, [shelters, filter, nameQuery]);
 
   const ranked = useMemo(() => {
     if (!origin) return filtered;
@@ -108,6 +124,15 @@ export default function ShelterMap({ shelters }: { shelters: Shelter[] }) {
             {searching ? "…" : "Search"}
           </button>
         </form>
+
+        <div className="mt-2">
+          <input
+            value={nameQuery}
+            onChange={(e) => setNameQuery(e.target.value)}
+            placeholder="Filter by resource name (e.g. Covenant House)"
+            className="w-full rounded-md border border-ink-muted/30 px-3 py-2 text-sm focus:border-brand focus:outline-none"
+          />
+        </div>
 
         <div className="mt-3 flex flex-wrap gap-1">
           {FILTERS.map((f) => (
@@ -223,13 +248,16 @@ export default function ShelterMap({ shelters }: { shelters: Shelter[] }) {
                         </span>
                       ))}
                     </p>
-                    {s.website && (
-                      <p className="mt-2">
-                        <a className="text-xs text-brand underline" href={s.website} target="_blank" rel="noreferrer">
-                          Website
+                    <p className="mt-2 flex flex-wrap gap-2 text-xs">
+                      <Link href={`/resource/${s.id}`} className="font-semibold text-brand underline">
+                        Full details →
+                      </Link>
+                      {s.website && (
+                        <a className="text-brand underline" href={s.website} target="_blank" rel="noreferrer">
+                          Website ↗
                         </a>
-                      </p>
-                    )}
+                      )}
+                    </p>
                   </div>
                 </Popup>
               </Marker>
