@@ -31,11 +31,29 @@ export const metadata: Metadata = {
     alternateLocale: ["es_US", "fr_CA"],
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "HomelessHelp",
+    description:
+      "Find shelters and crisis hotlines, or learn how to volunteer and donate effectively to help people experiencing homelessness.",
+  },
+  other: {
+    "application-name": "HomelessHelp",
+    "theme-color": "#0f766e",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="HomelessHelp Learn"
+          href="/feed.xml"
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <AdSenseScript />
         <SiteHeader />

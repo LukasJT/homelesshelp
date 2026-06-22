@@ -19,12 +19,20 @@ export default function LearnIndex() {
   return (
     <RailedLayout>
     <section className="mx-auto max-w-4xl px-4 py-8">
-      <header>
-        <h1 className="text-3xl font-bold text-ink">Learn about homelessness</h1>
-        <p className="mt-2 text-ink-soft">
-          Short, plain-language explanations of what causes homelessness, what works to reduce it,
-          and how to help. Sources and citations are linked inline where they exist.
-        </p>
+      <header className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-bold text-ink">Learn about homelessness</h1>
+          <p className="mt-2 text-ink-soft">
+            Short, plain-language explanations of what causes homelessness, what works to reduce it,
+            and how to help. Sources and citations are linked inline where they exist.
+          </p>
+        </div>
+        <a
+          href="/feed.xml"
+          className="rounded-md border border-brand-light/60 px-3 py-1.5 text-xs font-medium text-ink-muted hover:border-brand hover:text-brand"
+        >
+          📡 RSS feed
+        </a>
       </header>
 
       <div className="mt-8 space-y-10">
