@@ -30,6 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/research`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/stats`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/glossary`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/data`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const articleRoutes: MetadataRoute.Sitemap = getArticleSlugs().map((slug) => ({

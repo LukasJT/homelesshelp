@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/find-help", label: "Find Help Near Me" },
-  { href: "/volunteer", label: "Volunteer Near Me" },
-  { href: "/get-help", label: "Crisis Hotlines" },
+  { href: "/find-help", label: "Find Help" },
+  { href: "/volunteer", label: "Volunteer" },
+  { href: "/get-help", label: "Crisis Lines" },
   { href: "/map", label: "Map" },
   { href: "/learn", label: "Learn" },
-  { href: "/help-out", label: "How To Help" },
+  { href: "/research", label: "Research" },
 ];
 
 export function SiteHeader() {

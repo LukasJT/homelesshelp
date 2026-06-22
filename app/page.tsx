@@ -46,28 +46,34 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* THREE PATHS */}
+      {/* FOUR PATHS */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-bold text-ink">Why are you here?</h2>
-        <p className="mt-1 text-ink-muted">This site serves three audiences equally — pick the one that fits you.</p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <p className="mt-1 text-ink-muted">This site serves four audiences — pick the one that fits you.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PathCard
             href="/find-help"
             title="I need help"
             color="brand"
-            body="Enter your city and we'll show the nearest shelters, day centers, food programs, and medical care. Always free, no account required."
+            body="Enter your city and we'll show the nearest shelters, day centers, food programs, and medical care. Always free, no account."
           />
           <PathCard
             href="/volunteer"
             title="I want to volunteer or donate"
             color="accent"
-            body="Type your city and we'll list shelters near you that accept volunteers. Includes phone numbers and what shelters actually need this week (it's not used clothes)."
+            body="Type your city and we'll list shelters near you that take volunteers. With phone numbers and what they actually need."
           />
           <PathCard
             href="/learn"
             title="I want to understand"
             color="ink"
-            body="Plain-language guides on the causes of homelessness, what works to reduce it, and how to talk to someone on the street."
+            body="Plain-language guides on the causes of homelessness, what works, and how to talk to someone on the street."
+          />
+          <PathCard
+            href="/research"
+            title="I'm a student or researcher"
+            color="brand"
+            body="Citable statistics, a glossary, primary-source links, a downloadable dataset, and citation formats for your paper."
           />
         </div>
       </section>

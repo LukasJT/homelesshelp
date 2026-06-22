@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
+import { CitationBox } from "@/components/CitationBox";
 
 interface Params {
   params: { slug: string };
@@ -37,6 +38,11 @@ export default async function ArticlePage({ params }: Params) {
       <div
         className="prose-article mt-8 max-w-none"
         dangerouslySetInnerHTML={{ __html: article.html }}
+      />
+
+      <CitationBox
+        title={article.title}
+        url={`https://homelesshelp.net/learn/${article.slug}`}
       />
 
       <hr className="my-12 border-brand-light/40" />
