@@ -39,6 +39,9 @@ export function SiteFooter() {
             <li><Link href="/help-out#charities" className="hover:text-brand">Effective charities</Link></li>
             <li><Link href="/submit" className="hover:text-brand">Submit a resource</Link></li>
             <li><Link href="/learn" className="hover:text-brand">Articles</Link></li>
+            <li><Link href="/research" className="hover:text-brand">Research hub</Link></li>
+            <li><Link href="/press" className="hover:text-brand">Press kit</Link></li>
+            <li><Link href="/embed" className="hover:text-brand">Embed our map</Link></li>
             <li><Link href="/about" className="hover:text-brand">About us</Link></li>
           </ul>
         </div>

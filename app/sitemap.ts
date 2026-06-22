@@ -36,6 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/data`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/timeline`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     { url: `${BASE}/states`, lastModified: now, changeFrequency: "yearly", priority: 0.75 },
+    { url: `${BASE}/press`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/embed`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const articleRoutes: MetadataRoute.Sitemap = getArticleSlugs().map((slug) => ({
