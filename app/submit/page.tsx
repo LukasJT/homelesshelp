@@ -1,15 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { POPULATION_LABEL, SERVICE_LABEL } from "@/lib/shelters";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { POPULATION_LABEL, SERVICE_LABEL, getShelterById } from "@/lib/shelters";
 import { RailedLayout } from "@/components/RailedLayout";
 
 const POPULATIONS = Object.entries(POPULATION_LABEL) as [string, string][];
 const SERVICES = Object.entries(SERVICE_LABEL) as [string, string][];
 
 export default function SubmitPage() {
+  return (
+    <Suspense fallback={null}>
+      <SubmitInner />
+    </Suspense>
+  );
+}
+
+function SubmitInner() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState<string>("");
+  const searchParams = useSearchParams();
+  const reportId = searchParams.get("report");
+  const reportedResource = reportId ? getShelterById(reportId) : undefined;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -17,6 +29,8 @@ export default function SubmitPage() {
     const fd = new FormData(e.currentTarget);
     const populationsServed = Array.from(fd.getAll("populationsServed")).map(String);
     const services = Array.from(fd.getAll("services")).map(String);
+    const notesField = String(fd.get("notes") ?? "");
+    const reportPrefix = reportId ? `[Report for existing resource id: ${reportId}]\n` : "";
     const payload = {
       name: fd.get("name"),
       address: fd.get("address"),
@@ -26,7 +40,7 @@ export default function SubmitPage() {
       phone: fd.get("phone"),
       website: fd.get("website"),
       hours: fd.get("hours"),
-      notes: fd.get("notes"),
+      notes: reportPrefix + notesField,
       email: fd.get("email"),
       populationsServed,
       services,
@@ -56,12 +70,41 @@ export default function SubmitPage() {
     <RailedLayout>
     <section className="mx-auto max-w-3xl px-4 py-10">
       <header>
-        <h1 className="text-3xl font-bold text-ink">Submit a resource</h1>
+        <h1 className="text-3xl font-bold text-ink">
+          {reportedResource ? "Report an issue" : "Submit a resource"}
+        </h1>
         <p className="mt-2 text-ink-soft">
-          Know a shelter, day center, food program, or outreach group that should be on the map?
-          Submit it here. We review every submission before it goes live to verify the basics — usually within a week.
+          {reportedResource ? (
+            <>
+              Reporting an issue with <strong className="text-ink">{reportedResource.name}</strong>{" "}
+              ({reportedResource.city}, {reportedResource.region}). Describe what's wrong in the
+              Notes field below — wrong phone, closed, hours changed, anything. Other fields are
+              optional; only fill in what you know.
+            </>
+          ) : (
+            <>
+              Know a shelter, day center, food program, or outreach group that should be on the map?
+              Submit it here. We review every submission before it goes live to verify the basics —
+              usually within a week.
+            </>
+          )}
         </p>
       </header>
+
+      {reportedResource && (
+        <div className="mt-6 rounded-lg border border-accent/40 bg-accent/10 p-4 text-sm">
+          <p className="font-semibold text-amber-900">
+            You're reporting an issue with: {reportedResource.name}
+          </p>
+          <p className="mt-1 text-ink-soft">
+            {reportedResource.address}, {reportedResource.city}, {reportedResource.region}
+          </p>
+          <p className="mt-2 text-xs text-ink-muted">
+            Below: use the Notes field to describe what's wrong. Leave other fields blank if you don't
+            know — we'll figure it out from your notes.
+          </p>
+        </div>
+      )}
 
       {status === "success" ? (
         <div className="mt-8 rounded-lg border border-brand bg-brand-light/30 p-6">

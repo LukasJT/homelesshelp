@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllCitySlugs, getAllShelters } from "@/lib/shelters";
 import { getArticleSlugs } from "@/lib/articles";
+import { getAllPopulationProfiles } from "@/lib/populations";
 
 const BASE = "https://homelesshelp.net";
 
@@ -40,5 +41,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...cityRoutes, ...resourceRoutes];
+  const populationRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE}/for`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...getAllPopulationProfiles().map((p) => ({
+      url: `${BASE}/for/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
+  ];
+
+  return [...staticRoutes, ...articleRoutes, ...cityRoutes, ...resourceRoutes, ...populationRoutes];
 }

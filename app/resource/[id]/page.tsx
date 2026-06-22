@@ -164,11 +164,14 @@ export default function ResourcePage({ params }: Params) {
             as a public reference and may be out of date.
           </p>
           <p className="mt-2">
-            Spot an error?{" "}
-            <Link href="/submit" className="text-brand underline">
-              Tell us
+            Spot an error — wrong phone, closed, hours changed?{" "}
+            <Link
+              href={`/submit?report=${s.id}`}
+              className="text-brand underline"
+            >
+              Report it
             </Link>{" "}
-            and we'll fix it.
+            and we'll fix it (usually within a week).
           </p>
         </div>
 

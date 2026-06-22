@@ -3,7 +3,7 @@ import Link from "next/link";
 export function SiteFooter() {
   return (
     <footer className="mt-16 border-t border-brand-light/40 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-4">
+      <div className="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-2 lg:grid-cols-5">
         <div>
           <p className="text-lg font-semibold text-ink">HomelessHelp.net</p>
           <p className="mt-2 text-sm text-ink-muted">
@@ -19,20 +19,29 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="text-sm font-semibold text-ink">Site</p>
+          <p className="text-sm font-semibold text-ink">Find help</p>
           <ul className="mt-2 space-y-1 text-sm text-ink-soft">
-            <li><Link href="/map" className="hover:text-brand">Map of resources</Link></li>
-            <li><Link href="/learn" className="hover:text-brand">Learn about homelessness</Link></li>
-            <li><Link href="/help-out" className="hover:text-brand">Volunteer & donate</Link></li>
-            <li><Link href="/help-out#volunteer" className="hover:text-brand">Ways to volunteer</Link></li>
-            <li><Link href="/submit" className="hover:text-brand">Submit a resource</Link></li>
+            <li><Link href="/find-help" className="hover:text-brand">Find help near me</Link></li>
+            <li><Link href="/map" className="hover:text-brand">Browse the map</Link></li>
+            <li><Link href="/city" className="hover:text-brand">Browse cities</Link></li>
+            <li><Link href="/for" className="hover:text-brand">Resources by population</Link></li>
+            <li><Link href="/learn/if-you-become-homeless" className="hover:text-brand">If you just became homeless</Link></li>
+            <li><Link href="/learn/daily-survival-guide" className="hover:text-brand">Daily survival guide</Link></li>
           </ul>
         </div>
         <div>
-          <p className="text-sm font-semibold text-ink">About</p>
-          <ul className="mt-2 mb-2 space-y-1 text-sm text-ink-soft">
+          <p className="text-sm font-semibold text-ink">Get involved</p>
+          <ul className="mt-2 space-y-1 text-sm text-ink-soft">
+            <li><Link href="/volunteer" className="hover:text-brand">Volunteer near me</Link></li>
+            <li><Link href="/help-out#donate" className="hover:text-brand">How to donate effectively</Link></li>
+            <li><Link href="/help-out#charities" className="hover:text-brand">Effective charities</Link></li>
+            <li><Link href="/submit" className="hover:text-brand">Submit a resource</Link></li>
+            <li><Link href="/learn" className="hover:text-brand">Articles</Link></li>
             <li><Link href="/about" className="hover:text-brand">About us</Link></li>
           </ul>
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-ink">Disclaimer</p>
           <p className="mt-2 text-xs text-ink-muted leading-relaxed">
             HomelessHelp is not affiliated with any government agency, shelter, or charity, and
             does not accept donations or process money. Every charity listed on this site
