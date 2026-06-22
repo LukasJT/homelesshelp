@@ -149,6 +149,9 @@ export default function ResearchPage() {
           <Link href="/timeline" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
             Timeline →
           </Link>
+          <Link href="/case-studies" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
+            Case studies →
+          </Link>
           <Link href="/glossary" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
             Glossary →
           </Link>
