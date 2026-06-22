@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllCitySlugs, getAllShelters } from "@/lib/shelters";
 import { getArticleSlugs } from "@/lib/articles";
 import { getAllPopulationProfiles } from "@/lib/populations";
+import { getAllServiceProfiles } from "@/lib/services";
 
 const BASE = "https://homelesshelp.net";
 
@@ -51,5 +52,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticRoutes, ...articleRoutes, ...cityRoutes, ...resourceRoutes, ...populationRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE}/service`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...getAllServiceProfiles().map((p) => ({
+      url: `${BASE}/service/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
+  ];
+
+  return [
+    ...staticRoutes,
+    ...articleRoutes,
+    ...cityRoutes,
+    ...resourceRoutes,
+    ...populationRoutes,
+    ...serviceRoutes,
+  ];
 }

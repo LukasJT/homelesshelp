@@ -25,6 +25,7 @@ export function SiteFooter() {
             <li><Link href="/map" className="hover:text-brand">Browse the map</Link></li>
             <li><Link href="/city" className="hover:text-brand">Browse cities</Link></li>
             <li><Link href="/for" className="hover:text-brand">Resources by population</Link></li>
+            <li><Link href="/service" className="hover:text-brand">Resources by service</Link></li>
             <li><Link href="/learn/if-you-become-homeless" className="hover:text-brand">If you just became homeless</Link></li>
             <li><Link href="/learn/daily-survival-guide" className="hover:text-brand">Daily survival guide</Link></li>
           </ul>
