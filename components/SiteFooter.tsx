@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ManageCookiesButton } from "./ConsentBanner";
 
 export function SiteFooter() {
   return (
@@ -53,9 +54,18 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-brand-light/40 py-4">
-        <p className="mx-auto max-w-6xl px-4 text-xs text-ink-muted">
-          © {new Date().getFullYear()} HomelessHelp.net — Map data © OpenStreetMap contributors.
-        </p>
+        <div className="mx-auto max-w-6xl px-4 flex flex-wrap items-center justify-between gap-3 text-xs text-ink-muted">
+          <p>
+            © {new Date().getFullYear()} HomelessHelp.net — Map data © OpenStreetMap contributors.
+          </p>
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <Link href="/about" className="hover:text-brand">About</Link>
+            <Link href="/privacy" className="hover:text-brand">Privacy</Link>
+            <Link href="/terms" className="hover:text-brand">Terms</Link>
+            <Link href="/languages" className="hover:text-brand">Languages</Link>
+            <ManageCookiesButton />
+          </nav>
+        </div>
       </div>
     </footer>
   );
