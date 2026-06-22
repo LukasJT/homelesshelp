@@ -32,12 +32,21 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/get-help"
-          className="md:hidden rounded-md bg-danger px-3 py-2 text-sm font-semibold text-white"
-        >
-          Get Help
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/es"
+            className="hidden md:inline-block rounded-md border border-ink-muted/30 px-2 py-1 text-xs font-medium text-ink-muted hover:border-brand hover:text-brand"
+            aria-label="Cambiar a español"
+          >
+            ES
+          </Link>
+          <Link
+            href="/get-help"
+            className="md:hidden rounded-md bg-danger px-3 py-2 text-sm font-semibold text-white"
+          >
+            Get Help
+          </Link>
+        </div>
       </div>
     </header>
   );

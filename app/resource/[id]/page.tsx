@@ -111,6 +111,35 @@ export default function ResourcePage({ params }: Params) {
           </a>
         </div>
 
+        {s.services.includes("emergency-shelter") && (
+          <div className="mt-6 rounded-lg bg-brand-light/30 border border-brand-light p-4 text-sm">
+            <p className="font-semibold text-brand-dark">How to check if a bed is open tonight</p>
+            <ol className="mt-2 space-y-1 list-decimal pl-5 text-ink-soft">
+              <li>
+                Call <strong className="text-ink">211</strong> first — they keep live
+                bed-availability counts for every region, including this one.
+              </li>
+              {s.phone && (
+                <li>
+                  Or call this shelter directly:{" "}
+                  <a
+                    href={`tel:${s.phone.replace(/[^0-9+]/g, "")}`}
+                    className="font-semibold text-brand"
+                  >
+                    {s.phone}
+                  </a>
+                  . Ask "do you have a bed available tonight?"
+                </li>
+              )}
+              <li>
+                If you can, also ask about pets, partners, sobriety requirements, and curfew
+                before traveling. Bed counts change hourly — we can't show real-time availability
+                here.
+              </li>
+            </ol>
+          </div>
+        )}
+
         <div className="mt-6 rounded-lg bg-accent/10 border border-accent/40 p-4 text-sm">
           <p className="font-semibold text-amber-900">Want to volunteer here?</p>
           <p className="mt-1 text-ink-soft">

@@ -34,7 +34,31 @@ export default function FindHelpPage() {
 
         <NearbyFinder shelters={getAllShelters()} mode="help" />
 
-        <div className="mt-10 rounded-lg bg-white p-6 border border-brand-light/60">
+        <div className="mt-8 rounded-lg bg-brand-light/30 border border-brand-light p-5">
+          <h2 className="text-lg font-semibold text-ink">How to find a bed open <em>right now</em></h2>
+          <ol className="mt-3 space-y-1.5 list-decimal pl-5 text-sm text-ink-soft">
+            <li>
+              Call <strong className="text-ink">211</strong> first. They keep live bed-availability
+              data for every region in the US and most of Canada — much more current than any
+              website can be.
+            </li>
+            <li>
+              If 211 isn't an option, call shelters from the list below in order — each card has a
+              tap-to-call phone number.
+            </li>
+            <li>
+              Ask the same questions: "do you have a bed available tonight?", "any restrictions
+              (pets, partner, sobriety)?", "what time can I check in?", "what's the closest place
+              to get to you?"
+            </li>
+            <li>
+              If multiple shelters say no, ask the last one you call for a referral — they often
+              know who has space.
+            </li>
+          </ol>
+        </div>
+
+        <div className="mt-6 rounded-lg bg-white p-6 border border-brand-light/60">
           <h2 className="text-lg font-semibold text-ink">Before you go</h2>
           <ul className="mt-3 space-y-2 text-sm text-ink-soft">
             <li>
