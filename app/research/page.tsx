@@ -143,6 +143,12 @@ export default function ResearchPage() {
           <Link href="/stats" className="rounded-md bg-brand px-3 py-1.5 font-semibold text-white">
             Statistics →
           </Link>
+          <Link href="/states" className="rounded-md bg-brand px-3 py-1.5 font-semibold text-white">
+            By state/province →
+          </Link>
+          <Link href="/timeline" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
+            Timeline →
+          </Link>
           <Link href="/glossary" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
             Glossary →
           </Link>

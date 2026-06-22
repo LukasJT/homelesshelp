@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 import { CitationBox } from "@/components/CitationBox";
+import { LineChart } from "@/components/charts/LineChart";
+import { BarChart } from "@/components/charts/BarChart";
 
 export const metadata = {
   title: "Homelessness statistics — US & Canada figures with primary sources",
@@ -145,9 +147,115 @@ export default function StatsPage() {
         </nav>
 
         <Section id="headline" title="Headline figures" stats={HEADLINE} />
+
+        <LineChart
+          title="US homelessness, single-night PIT count"
+          subtitle="The 2023 single-year increase is the largest since AHAR reporting began."
+          unit=""
+          source={{
+            name: "HUD AHAR Part 1, multiple years",
+            url: "https://www.huduser.gov/portal/datasets/ahar.html",
+          }}
+          series={[
+            {
+              name: "Total homeless (US, PIT)",
+              color: "#0f766e",
+              points: [
+                { label: "2007", value: 647258 },
+                { label: "2009", value: 643067 },
+                { label: "2012", value: 633782 },
+                { label: "2015", value: 564708 },
+                { label: "2018", value: 552830 },
+                { label: "2020", value: 580466 },
+                { label: "2022", value: 582462 },
+                { label: "2023", value: 653104, annotation: "+12% YoY" },
+              ],
+            },
+          ]}
+        />
+
+        <LineChart
+          title="US veteran homelessness, single-night PIT count"
+          subtitle="The largest sustained reduction in any homeless subpopulation in modern history."
+          source={{
+            name: "HUD AHAR + VA HUD-VASH program data",
+            url: "https://www.va.gov/homeless/hud-vash.asp",
+          }}
+          series={[
+            {
+              name: "Homeless veterans (US, PIT)",
+              color: "#0f766e",
+              points: [
+                { label: "2009", value: 75609, annotation: "Peak" },
+                { label: "2012", value: 62619 },
+                { label: "2015", value: 47725 },
+                { label: "2018", value: 37878 },
+                { label: "2020", value: 37252 },
+                { label: "2022", value: 33129, annotation: "-56% from peak" },
+                { label: "2023", value: 35574 },
+              ],
+            },
+          ]}
+        />
+
         <Section id="populations" title="By population" stats={POPULATION} />
+
+        <BarChart
+          title="Homeless population by group (US, 2023)"
+          subtitle="Single-night PIT count totals by major subpopulation. Chronic and veteran subgroups overlap with individuals."
+          unit=""
+          source={{
+            name: "HUD AHAR Part 1, 2023",
+            url: "https://www.huduser.gov/portal/sites/default/files/pdf/2023-AHAR-Part-1.pdf",
+          }}
+          data={[
+            { label: "Individuals (single adults)", value: 421400 },
+            { label: "Families with children", value: 186100 },
+            { label: "Chronically homeless", value: 144100, highlight: true },
+            { label: "Veterans", value: 35600 },
+            { label: "Unaccompanied youth (< 25)", value: 34700 },
+          ]}
+        />
+
         <Section id="housing" title="Housing supply and costs" stats={HOUSING_AND_COSTS} />
+
+        <BarChart
+          title="Hours of minimum-wage work required to afford a 1-bedroom at FMR"
+          subtitle="Per week, in selected US states. 40 hours = affordable; anything higher means a single minimum-wage job can't cover rent."
+          unit=""
+          source={{
+            name: "NLIHC Out of Reach 2024",
+            url: "https://nlihc.org/oor",
+          }}
+          data={[
+            { label: "California (state min. wage)", value: 88, highlight: true },
+            { label: "New York", value: 72 },
+            { label: "Massachusetts", value: 68 },
+            { label: "Washington", value: 70 },
+            { label: "Texas", value: 117 },
+            { label: "Florida", value: 89 },
+            { label: "Illinois", value: 56 },
+            { label: "Arkansas", value: 65 },
+          ]}
+        />
+
         <Section id="outcomes" title="Program outcomes — what works at scale" stats={OUTCOMES} />
+
+        <BarChart
+          title="12-month housing retention rate: Housing First vs treatment-first"
+          subtitle="Across multiple RCTs and meta-analyses, Housing First produces dramatically higher retention than the staircase / treatment-first model."
+          unit=""
+          source={{
+            name: "Tsemberis et al.; meta-analyses",
+            url: "https://pubmed.ncbi.nlm.nih.gov/15117004/",
+          }}
+          data={[
+            { label: "Housing First (best case)", value: 90, highlight: true },
+            { label: "Housing First (avg)", value: 84 },
+            { label: "Treatment-first (best case)", value: 50 },
+            { label: "Treatment-first (avg)", value: 38 },
+          ]}
+        />
 
         <section className="mt-12 rounded-xl bg-paper p-6">
           <h2 className="text-xl font-semibold text-ink">A note on uncertainty</h2>
