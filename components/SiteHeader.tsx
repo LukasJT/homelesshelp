@@ -34,11 +34,12 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <Link
-            href="/es"
-            className="hidden md:inline-block rounded-md border border-ink-muted/30 px-2 py-1 text-xs font-medium text-ink-muted hover:border-brand hover:text-brand"
-            aria-label="Cambiar a español"
+            href="/languages"
+            className="hidden md:inline-block rounded-md border border-ink-muted/30 px-2.5 py-1 text-xs font-medium text-ink-muted hover:border-brand hover:text-brand"
+            aria-label="Choose language / Idioma / Langue"
+            title="Languages"
           >
-            ES
+            🌐 EN · ES · FR · +50
           </Link>
           <Link
             href="/get-help"
