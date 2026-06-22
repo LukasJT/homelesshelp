@@ -3,6 +3,7 @@ import { getAllCitySlugs, getAllShelters } from "@/lib/shelters";
 import { getArticleSlugs } from "@/lib/articles";
 import { getAllPopulationProfiles } from "@/lib/populations";
 import { getAllServiceProfiles } from "@/lib/services";
+import { getAllRegions } from "@/lib/regions";
 
 const BASE = "https://homelesshelp.net";
 
@@ -36,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/data`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/timeline`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     { url: `${BASE}/states`, lastModified: now, changeFrequency: "yearly", priority: 0.75 },
+    { url: `${BASE}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/press`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/embed`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
@@ -81,6 +83,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const stateRoutes: MetadataRoute.Sitemap = getAllRegions().map((r) => ({
+    url: `${BASE}/states/${r.code.toLowerCase()}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...articleRoutes,
@@ -88,5 +97,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...resourceRoutes,
     ...populationRoutes,
     ...serviceRoutes,
+    ...stateRoutes,
   ];
 }

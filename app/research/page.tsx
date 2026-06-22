@@ -152,6 +152,9 @@ export default function ResearchPage() {
           <Link href="/glossary" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
             Glossary →
           </Link>
+          <Link href="/faq" className="rounded-md bg-ink px-3 py-1.5 font-semibold text-white">
+            FAQ →
+          </Link>
           <Link href="/data" className="rounded-md bg-accent px-3 py-1.5 font-semibold text-ink">
             Download dataset →
           </Link>
