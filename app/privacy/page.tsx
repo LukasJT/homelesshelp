@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <RailedLayout>
       <article className="mx-auto max-w-3xl px-4 py-10">
         <h1 className="text-3xl font-bold text-ink">Privacy policy</h1>
-        <p className="mt-2 text-sm text-ink-muted">Last updated 2026-06-22.</p>
+        <p className="mt-2 text-sm text-ink-muted">Last updated 2026-09-19.</p>
 
         <p className="mt-6 text-ink-soft">
           HomelessHelp.net is built to be useful to people whose privacy is often violated
@@ -29,8 +29,9 @@ export default function PrivacyPage() {
             identifier — unless you voluntarily type it into a form (see below).
           </li>
           <li>
-            We do not track you across the web. We do not sell or share user data with marketers
-            or data brokers.
+            We do not sell personal information. If you consent to advertising, advertising
+            partners may receive device, browser, page-view, cookie, and approximate-location data
+            under their own policies to deliver, secure, and measure ads.
           </li>
           <li>We do not accept donations or process payments. No payment data ever passes through this site.</li>
           <li>
@@ -90,12 +91,12 @@ export default function PrivacyPage() {
             </a>
           </li>
           <li>
-            <strong className="text-ink">Google AdSense</strong> — site advertising. When ads are
-            active, Google may set cookies to deliver and measure ads. You can opt out (or in,
-            depending on jurisdiction) using our cookie banner. We block sensitive ad categories
-            including high-interest loans, gambling, alcohol, and weight-loss schemes.{" "}
-            <a className="text-brand underline" href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">
-              how Google uses ads data ↗
+            <strong className="text-ink">Adsterra and its advertising partners</strong> — ads on
+            selected educational pages only. No ad vendor code loads until you accept advertising
+            cookies. Ads are excluded from crisis, resource-finder, location, population-support,
+            submission, translated, and sensitive-article pages.{" "}
+            <a className="text-brand underline" href="https://adsterra.com/privacy-policy/" target="_blank" rel="noreferrer">
+              privacy policy ↗
             </a>
           </li>
           <li>
@@ -121,9 +122,8 @@ export default function PrivacyPage() {
           </li>
         </ul>
         <p className="mt-3 text-ink-soft">
-          Third-party cookies (Google AdSense) load only after you accept the cookie banner or if
-          you are in a jurisdiction where consent is not legally required and you have not
-          explicitly opted out.
+          Third-party advertising code loads only after you explicitly accept the cookie banner.
+          Declining leaves all educational and help content available without ads.
         </p>
 
         <h2 className="mt-10 text-xl font-semibold text-ink">Your rights</h2>

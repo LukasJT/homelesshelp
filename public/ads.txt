@@ -1,7 +1,4 @@
 # ads.txt for HomelessHelp.net
 #
-# Once your AdSense account is approved, replace PUB-XXXXXXXXXXXXXXXX with
-# your actual publisher ID (the number after `ca-pub-` in your AdSense
-# account). See: https://support.google.com/adsense/answer/7532444
-#
-google.com, pub-PUB-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# No seller records are published yet. Add only lines copied from an approved
+# advertising account; placeholder publisher IDs can invalidate this file.
