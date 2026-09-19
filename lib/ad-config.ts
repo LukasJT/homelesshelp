@@ -1,4 +1,6 @@
-export const adsEnabled = process.env.NEXT_PUBLIC_THIRD_PARTY_ADS_ENABLED === "true";
+// Enabled by default for eligible routes. Set the public flag to "false" for
+// an immediate production kill switch without a code change.
+export const adsEnabled = process.env.NEXT_PUBLIC_THIRD_PARTY_ADS_ENABLED !== "false";
 export const adFrames = {
   mobile: { src: "/ads/320x50.html", width: 320, height: 50 },
   tablet: { src: "/ads/468x60.html", width: 468, height: 60 },
