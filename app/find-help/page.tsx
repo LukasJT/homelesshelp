@@ -7,6 +7,7 @@ export const metadata = {
   title: "Find help near you — shelters, food, and crisis services",
   description:
     "Enter your city or zip and find the nearest homeless shelters, day centers, food programs, and medical care. Free, no account, no judgment.",
+  alternates: { canonical: "/find-help" },
 };
 
 export default function FindHelpPage() {

@@ -2,6 +2,14 @@ import Link from "next/link";
 import { getAllShelters } from "@/lib/shelters";
 import { getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+    languages: { en: "/", es: "/es", fr: "/fr", "x-default": "/" },
+  },
+};
 
 export default function LandingPage() {
   const shelterCount = getAllShelters().length;

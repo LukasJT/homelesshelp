@@ -9,13 +9,15 @@ type Consent = "accepted" | "declined" | null;
 
 export function getStoredConsent(): Consent {
   if (typeof window === "undefined") return null;
-  const v = window.localStorage.getItem(STORAGE_KEY);
-  return v === "accepted" || v === "declined" ? (v as Consent) : null;
+  try {
+    const v = window.localStorage.getItem(STORAGE_KEY);
+    return v === "accepted" || v === "declined" ? (v as Consent) : null;
+  } catch { return null; }
 }
 
 export function setStoredConsent(value: Exclude<Consent, null>) {
   if (typeof window === "undefined") return;
-  window.localStorage.setItem(STORAGE_KEY, value);
+  try { window.localStorage.setItem(STORAGE_KEY, value); } catch { /* cookie still preserves the choice */ }
   // Also set a cookie so server-rendered pages can react if needed
   document.cookie = `hh_consent=${value}; Path=/; Max-Age=31536000; SameSite=Lax`;
   // Notify the rest of the app
@@ -45,8 +47,8 @@ export function ConsentBanner() {
       <div className="rounded-xl border border-brand-light/60 bg-white p-4 shadow-lg">
         <p className="text-sm font-semibold text-ink">Cookies</p>
         <p className="mt-1 text-xs text-ink-soft">
-          We use cookies only to remember this preference and (if you accept) to show ads that
-          help keep the site free. We never sell personal data. See our{" "}
+          We use a necessary cookie to remember your choice. If you accept, advertising partners
+          may use cookies or similar technology to deliver and measure ads that keep the site free. See our{" "}
           <Link href="/privacy" className="text-brand underline">
             privacy policy
           </Link>

@@ -6,11 +6,12 @@ import { getAllServiceProfiles } from "@/lib/services";
 import { getAllRegions } from "@/lib/regions";
 
 const BASE = "https://homelesshelp.net";
+const CONTENT_REVIEWED = new Date("2026-09-19");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = CONTENT_REVIEWED;
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${BASE}/`, changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE}/map`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/city`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/get-help`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
@@ -45,40 +46,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleRoutes: MetadataRoute.Sitemap = getArticleSlugs().map((slug) => ({
     url: `${BASE}/learn/${slug}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const cityRoutes: MetadataRoute.Sitemap = getAllCitySlugs().map((slug) => ({
     url: `${BASE}/city/${slug}`,
-    lastModified: now,
     changeFrequency: "weekly",
     priority: 0.8,
   }));
 
   const resourceRoutes: MetadataRoute.Sitemap = getAllShelters().map((s) => ({
     url: `${BASE}/resource/${s.id}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
   const populationRoutes: MetadataRoute.Sitemap = [
-    { url: `${BASE}/for`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/for`, changeFrequency: "monthly", priority: 0.8 },
     ...getAllPopulationProfiles().map((p) => ({
       url: `${BASE}/for/${p.slug}`,
-      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.85,
     })),
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = [
-    { url: `${BASE}/service`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/service`, changeFrequency: "monthly", priority: 0.8 },
     ...getAllServiceProfiles().map((p) => ({
       url: `${BASE}/service/${p.slug}`,
-      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.85,
     })),
@@ -86,7 +82,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const stateRoutes: MetadataRoute.Sitemap = getAllRegions().map((r) => ({
     url: `${BASE}/states/${r.code.toLowerCase()}`,
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

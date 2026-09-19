@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
 import { CitationBox } from "@/components/CitationBox";
+import { ThirdPartyAd } from "@/components/ThirdPartyAd";
+import { SENSITIVE_ARTICLES } from "@/lib/ad-policy";
 
 interface Params {
   params: { slug: string };
@@ -16,7 +18,12 @@ export async function generateMetadata({ params }: Params) {
   const slugs = getArticleSlugs();
   if (!slugs.includes(params.slug)) return {};
   const article = await getArticle(params.slug);
-  return { title: article.title, description: article.summary };
+  return {
+    title: article.title,
+    description: article.summary,
+    alternates: { canonical: `/learn/${article.slug}` },
+    openGraph: { title: article.title, description: article.summary, type: "article", url: `/learn/${article.slug}` },
+  };
 }
 
 export default async function ArticlePage({ params }: Params) {
@@ -24,10 +31,17 @@ export default async function ArticlePage({ params }: Params) {
   if (!slugs.includes(params.slug)) notFound();
   const article = await getArticle(params.slug);
   const others = getAllArticleMeta().filter((a) => a.slug !== params.slug);
+  const ads = !SENSITIVE_ARTICLES.has(params.slug);
+  const articleUrl = `https://homelesshelp.net/learn/${article.slug}`;
 
   return (
-    <RailedLayout>
+    <RailedLayout ads={ads}>
     <article className="mx-auto max-w-3xl px-4 py-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "Article", headline: article.title,
+        description: article.summary, mainEntityOfPage: articleUrl,
+        publisher: { "@type": "Organization", name: "HomelessHelp", url: "https://homelesshelp.net" },
+      }) }} />
       <p className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
         <Link href="/learn" className="hover:text-brand">Learn</Link> · {article.category}
       </p>
@@ -40,10 +54,14 @@ export default async function ArticlePage({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: article.html }}
       />
 
+      {ads && <ThirdPartyAd format="rectangle" />}
+
       <CitationBox
         title={article.title}
         url={`https://homelesshelp.net/learn/${article.slug}`}
       />
+
+      {ads && <ThirdPartyAd format="native" />}
 
       <hr className="my-12 border-brand-light/40" />
 

@@ -3,7 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ConsentBanner } from "@/components/ConsentBanner";
-import { AdSenseScript } from "@/components/AdSenseScript";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: {
@@ -13,14 +13,6 @@ export const metadata: Metadata = {
   description:
     "Free directory of homeless shelters and crisis resources across the US and Canada — plus a volunteer guide, donation playbook, and plain-language education on what works.",
   metadataBase: new URL("https://homelesshelp.net"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      en: "/",
-      es: "/es",
-      fr: "/fr",
-    },
-  },
   openGraph: {
     title: "HomelessHelp",
     description:
@@ -44,8 +36,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const language = headers().get("x-page-language") ?? "en";
   return (
-    <html lang="en">
+    <html lang={language}>
       <head>
         <link
           rel="alternate"
@@ -55,7 +48,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <AdSenseScript />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

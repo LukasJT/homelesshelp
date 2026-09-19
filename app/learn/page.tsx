@@ -6,6 +6,7 @@ export const metadata = {
   title: "Learn about homelessness",
   description:
     "Plain-language guides on the causes of homelessness, who is affected, what works to reduce it, and how to help.",
+  alternates: { canonical: "/learn" },
 };
 
 export default function LearnIndex() {
@@ -17,7 +18,7 @@ export default function LearnIndex() {
   }, {});
   const order = ["Foundations", "Populations", "Solutions", "Action", "General"];
   return (
-    <RailedLayout>
+    <RailedLayout ads>
     <section className="mx-auto max-w-4xl px-4 py-8">
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
