@@ -3,6 +3,14 @@ import { getAllShelters } from "@/lib/shelters";
 import { getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
 
+export const metadata = {
+  alternates: {
+    canonical: "/",
+    languages: { en: "/", es: "/es", fr: "/fr" },
+  },
+  openGraph: { url: "https://www.homelesshelp.net/" },
+};
+
 export default function LandingPage() {
   const shelterCount = getAllShelters().length;
   const articles = getAllArticleMeta();

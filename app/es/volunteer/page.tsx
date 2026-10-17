@@ -8,7 +8,7 @@ export const metadata = {
     "Escriba su ciudad o código postal y encuentre albergues, centros de día y programas de comida cerca de usted que aceptan voluntarios. Con teléfonos para cada uno.",
   alternates: {
     canonical: "/es/volunteer",
-    languages: { en: "/volunteer", es: "/es/volunteer" },
+    languages: { en: "/volunteer", es: "/es/volunteer", fr: "/fr/volunteer" },
   },
 };
 

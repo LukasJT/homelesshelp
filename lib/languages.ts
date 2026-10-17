@@ -85,6 +85,6 @@ export const INDIGENOUS: Lang[] = [
 
 export function googleTranslateUrl(targetCode: string, urlPath: string = "/"): string {
   const target = encodeURIComponent(targetCode);
-  const fullUrl = encodeURIComponent(`https://homelesshelp.net${urlPath}`);
+  const fullUrl = encodeURIComponent(`https://www.homelesshelp.net${urlPath}`);
   return `https://translate.google.com/translate?sl=en&tl=${target}&u=${fullUrl}`;
 }

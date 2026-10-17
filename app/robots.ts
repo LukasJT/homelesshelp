@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/"],
       },
     ],
-    sitemap: "https://homelesshelp.net/sitemap.xml",
+    sitemap: "https://www.homelesshelp.net/sitemap.xml",
   };
 }

@@ -16,7 +16,11 @@ export async function generateMetadata({ params }: Params) {
   const slugs = getArticleSlugs();
   if (!slugs.includes(params.slug)) return {};
   const article = await getArticle(params.slug);
-  return { title: article.title, description: article.summary };
+  return {
+    title: article.title,
+    description: article.summary,
+    alternates: { canonical: `/learn/${params.slug}` },
+  };
 }
 
 export default async function ArticlePage({ params }: Params) {
@@ -42,7 +46,7 @@ export default async function ArticlePage({ params }: Params) {
 
       <CitationBox
         title={article.title}
-        url={`https://homelesshelp.net/learn/${article.slug}`}
+        url={`https://www.homelesshelp.net/learn/${article.slug}`}
       />
 
       <hr className="my-12 border-brand-light/40" />

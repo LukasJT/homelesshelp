@@ -2,6 +2,7 @@ import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
+  alternates: { canonical: "/get-help", languages: { en: "/get-help", es: "/es/get-help", fr: "/fr/get-help" } },
   title: "Get help now — Crisis hotlines and emergency resources",
   description:
     "Free 24/7 hotlines for shelter, mental health crisis, domestic violence, veterans, youth, and LGBTQ+ people experiencing homelessness in the US and Canada.",

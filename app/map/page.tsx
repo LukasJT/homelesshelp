@@ -4,6 +4,7 @@ import { getAllShelters } from "@/lib/shelters";
 const ShelterMap = dynamic(() => import("@/components/ShelterMap"), { ssr: false });
 
 export const metadata = {
+  alternates: { canonical: "/map" },
   title: "Map of shelters and resources",
   description:
     "Browse homeless shelters, day centers, and crisis resources across the US and Canada on an interactive map.",

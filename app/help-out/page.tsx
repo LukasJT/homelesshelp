@@ -2,6 +2,7 @@ import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
+  alternates: { canonical: "/help-out" },
   title: "Volunteer & donate — concrete ways to help",
   description:
     "How to volunteer at a shelter, what to donate (and what not to), which charities are effective by population served, and how to make political change. US & Canada.",

@@ -3,6 +3,7 @@ import { getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
+  alternates: { canonical: "/learn" },
   title: "Learn about homelessness",
   description:
     "Plain-language guides on the causes of homelessness, who is affected, what works to reduce it, and how to help.",

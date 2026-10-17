@@ -4,6 +4,7 @@ import { RailedLayout } from "@/components/RailedLayout";
 import { getAllShelters } from "@/lib/shelters";
 
 export const metadata = {
+  alternates: { canonical: "/volunteer", languages: { en: "/volunteer", es: "/es/volunteer", fr: "/fr/volunteer" } },
   title: "Volunteer near you — find shelters that need help",
   description:
     "Enter your city or zip and find homeless shelters, day centers, and food programs near you that accept volunteers. Phone numbers and websites for every listing.",

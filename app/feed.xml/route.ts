@@ -1,6 +1,6 @@
 import { getAllArticleMeta, getArticle } from "@/lib/articles";
 
-const BASE = "https://homelesshelp.net";
+const BASE = "https://www.homelesshelp.net";
 
 function escape(s: string): string {
   return s

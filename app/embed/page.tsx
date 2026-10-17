@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RailedLayout } from "@/components/RailedLayout";
 
-const EMBED_URL = "https://homelesshelp.net/embed/map";
+const EMBED_URL = "https://www.homelesshelp.net/embed/map";
 
 const SNIPPET = `<iframe
   src="${EMBED_URL}"

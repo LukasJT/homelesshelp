@@ -12,20 +12,11 @@ export const metadata: Metadata = {
   },
   description:
     "Free directory of homeless shelters and crisis resources across the US and Canada — plus a volunteer guide, donation playbook, and plain-language education on what works.",
-  metadataBase: new URL("https://homelesshelp.net"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      en: "/",
-      es: "/es",
-      fr: "/fr",
-    },
-  },
+  metadataBase: new URL("https://www.homelesshelp.net"),
   openGraph: {
     title: "HomelessHelp",
     description:
       "Find shelters and crisis hotlines, or learn how to volunteer and donate effectively to help people experiencing homelessness.",
-    url: "https://homelesshelp.net",
     siteName: "HomelessHelp",
     locale: "en_US",
     alternateLocale: ["es_US", "fr_CA"],

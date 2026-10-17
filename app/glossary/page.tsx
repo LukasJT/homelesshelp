@@ -167,7 +167,7 @@ export default function GlossaryPage() {
 
         <CitationBox
           title="Glossary of homelessness terms"
-          url="https://homelesshelp.net/glossary"
+          url="https://www.homelesshelp.net/glossary"
         />
       </article>
     </RailedLayout>

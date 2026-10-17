@@ -6,7 +6,7 @@ export const metadata = {
     "Líneas telefónicas gratuitas 24/7 para albergue, crisis de salud mental, violencia doméstica, veteranos, jóvenes y LGBTQ+ en EE. UU. y Canadá. Muchas con operadores en español.",
   alternates: {
     canonical: "/es/get-help",
-    languages: { en: "/get-help", es: "/es/get-help" },
+    languages: { en: "/get-help", es: "/es/get-help", fr: "/fr/get-help" },
   },
 };
 

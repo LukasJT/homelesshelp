@@ -227,7 +227,7 @@ export default function StatePage({ params }: Params) {
 
         <CitationBox
           title={`Homelessness in ${region.name}`}
-          url={`https://homelesshelp.net/states/${region.code.toLowerCase()}`}
+          url={`https://www.homelesshelp.net/states/${region.code.toLowerCase()}`}
         />
       </article>
     </RailedLayout>

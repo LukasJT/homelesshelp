@@ -4,6 +4,7 @@ import { RailedLayout } from "@/components/RailedLayout";
 import { getAllShelters } from "@/lib/shelters";
 
 export const metadata = {
+  alternates: { canonical: "/find-help", languages: { en: "/find-help", es: "/es/find-help", fr: "/fr/find-help" } },
   title: "Find help near you — shelters, food, and crisis services",
   description:
     "Enter your city or zip and find the nearest homeless shelters, day centers, food programs, and medical care. Free, no account, no judgment.",

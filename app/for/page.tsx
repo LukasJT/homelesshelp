@@ -3,6 +3,7 @@ import { RailedLayout } from "@/components/RailedLayout";
 import { getAllPopulationProfiles } from "@/lib/populations";
 
 export const metadata = {
+  alternates: { canonical: "/for" },
   title: "Resources by population — youth, veterans, LGBTQ+, families, women, Indigenous",
   description:
     "Population-specific homeless resources, crisis lines, and effective charities for youth, veterans, LGBTQ+, families, women, and Indigenous communities.",

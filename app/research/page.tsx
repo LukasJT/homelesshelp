@@ -309,7 +309,7 @@ export default function ResearchPage() {
           </ul>
         </section>
 
-        <CitationBox title="Research hub" url="https://homelesshelp.net/research" />
+        <CitationBox title="Research hub" url="https://www.homelesshelp.net/research" />
       </article>
     </RailedLayout>
   );

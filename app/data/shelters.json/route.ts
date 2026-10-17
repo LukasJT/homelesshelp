@@ -4,7 +4,7 @@ export async function GET() {
   const shelters = getAllShelters();
   const payload = {
     license: "CC-BY-4.0",
-    attribution: "HomelessHelp.net shelter dataset, retrieved from https://homelesshelp.net/data",
+    attribution: "HomelessHelp.net shelter dataset, retrieved from https://www.homelesshelp.net/data",
     generated_at: new Date().toISOString(),
     count: shelters.length,
     shelters,

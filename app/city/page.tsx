@@ -3,6 +3,7 @@ import { citySlug, getAllShelters } from "@/lib/shelters";
 import { RailedLayout } from "@/components/RailedLayout";
 
 export const metadata = {
+  alternates: { canonical: "/city" },
   title: "Browse by city",
   description:
     "Find homeless shelters and resources by city, state, or province across the United States and Canada.",

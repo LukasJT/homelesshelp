@@ -4,6 +4,7 @@ import { getAllServiceProfiles } from "@/lib/services";
 import { getAllShelters } from "@/lib/shelters";
 
 export const metadata = {
+  alternates: { canonical: "/service" },
   title: "Resources by service — food, medical, housing, day centers, recovery",
   description:
     "Browse homeless resources by what they provide — free meals, food pantries, free clinics, day centers, housing programs, addiction treatment, harm reduction.",

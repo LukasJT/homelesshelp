@@ -42,7 +42,7 @@ export default function ResourcePage({ params }: Params) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `https://homelesshelp.net/resource/${s.id}`,
+    "@id": `https://www.homelesshelp.net/resource/${s.id}`,
     name: s.name,
     description: s.notes,
     address: {

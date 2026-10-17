@@ -305,7 +305,7 @@ export default function StatsPage() {
 
         <CitationBox
           title="Homelessness statistics — US & Canada"
-          url="https://homelesshelp.net/stats"
+          url="https://www.homelesshelp.net/stats"
         />
       </article>
     </RailedLayout>

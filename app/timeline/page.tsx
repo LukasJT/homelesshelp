@@ -172,7 +172,7 @@ export default function TimelinePage() {
 
         <CitationBox
           title="Timeline of homelessness in North America"
-          url="https://homelesshelp.net/timeline"
+          url="https://www.homelesshelp.net/timeline"
         />
       </article>
     </RailedLayout>

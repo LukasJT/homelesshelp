@@ -3,6 +3,7 @@ import { RailedLayout } from "@/components/RailedLayout";
 import { getAllShelters } from "@/lib/shelters";
 
 export const metadata = {
+  alternates: { canonical: "/about" },
   title: "About HomelessHelp.net",
   description:
     "HomelessHelp.net is a free, independent directory of homeless services across the US and Canada. We don't accept donations, take fees, or process money.",

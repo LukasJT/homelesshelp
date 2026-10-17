@@ -8,7 +8,7 @@ export const metadata = {
     "Escriba su ciudad o código postal y le mostramos los albergues, centros de día, comedores y atención médica más cercanos. Gratis, sin cuenta, sin juicio.",
   alternates: {
     canonical: "/es/find-help",
-    languages: { en: "/find-help", es: "/es/find-help" },
+    languages: { en: "/find-help", es: "/es/find-help", fr: "/fr/find-help" },
   },
 };
 

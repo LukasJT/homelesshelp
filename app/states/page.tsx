@@ -140,7 +140,7 @@ export default function StatesPage() {
 
         <CitationBox
           title="Homelessness by US state and Canadian province"
-          url="https://homelesshelp.net/states"
+          url="https://www.homelesshelp.net/states"
         />
       </article>
     </RailedLayout>

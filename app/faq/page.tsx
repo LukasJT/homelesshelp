@@ -264,7 +264,7 @@ export default function FAQPage() {
         // Strip the rich React content for JSON-LD by approximating with the question
         // (Real answer text would require more conversion logic — but FAQ markup helps
         // Google understand the page is Q&A even with a brief answer.)
-        text: "See the full answer at https://homelesshelp.net/faq",
+        text: "See the full answer at https://www.homelesshelp.net/faq",
       },
     })),
   };
@@ -301,7 +301,7 @@ export default function FAQPage() {
           ))}
         </dl>
 
-        <CitationBox title="FAQ — homelessness facts and citations" url="https://homelesshelp.net/faq" />
+        <CitationBox title="FAQ — homelessness facts and citations" url="https://www.homelesshelp.net/faq" />
       </article>
     </RailedLayout>
   );

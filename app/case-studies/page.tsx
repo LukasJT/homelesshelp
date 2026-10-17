@@ -272,7 +272,7 @@ export default function CaseStudiesPage() {
 
         <CitationBox
           title="Case studies: places that have reduced homelessness"
-          url="https://homelesshelp.net/case-studies"
+          url="https://www.homelesshelp.net/case-studies"
         />
       </article>
     </RailedLayout>

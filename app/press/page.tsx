@@ -147,7 +147,7 @@ export default function PressPage() {
           </ul>
         </section>
 
-        <CitationBox title="Press kit" url="https://homelesshelp.net/press" />
+        <CitationBox title="Press kit" url="https://www.homelesshelp.net/press" />
       </article>
     </RailedLayout>
   );

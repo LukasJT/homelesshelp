@@ -143,7 +143,7 @@ export default function DataPage() {
           </ul>
         </section>
 
-        <CitationBox title="HomelessHelp shelter dataset" url="https://homelesshelp.net/data" />
+        <CitationBox title="HomelessHelp shelter dataset" url="https://www.homelesshelp.net/data" />
       </article>
     </RailedLayout>
   );

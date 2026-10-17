@@ -8,6 +8,7 @@ import {
 } from "@/lib/languages";
 
 export const metadata = {
+  alternates: { canonical: "/languages" },
   title: "Languages — Idiomas — Langues — 语言",
   description:
     "HomelessHelp is hand-translated in English, Spanish, and French. For 50+ other languages spoken in North America, jump to Google-translated versions of our key pages.",
