@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 import { CitationBox } from "@/components/CitationBox";
+import { AdsterraBanner } from "@/components/AdsterraBanner";
 import { getAllArticleMeta } from "@/lib/articles";
 
 export const metadata = {
@@ -309,6 +310,7 @@ export default function ResearchPage() {
           </ul>
         </section>
 
+        <AdsterraBanner size="rectangle" />
         <CitationBox title="Research hub" url="https://www.homelesshelp.net/research" />
       </article>
     </RailedLayout>

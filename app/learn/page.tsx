@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
+import { AdsterraBanner } from "@/components/AdsterraBanner";
 
 export const metadata = {
   alternates: { canonical: "/learn" },
@@ -36,6 +37,8 @@ export default function LearnIndex() {
         </a>
       </header>
 
+      <AdsterraBanner size="leaderboard" />
+
       <div className="mt-8 space-y-10">
         {order
           .filter((cat) => grouped[cat])
@@ -59,6 +62,7 @@ export default function LearnIndex() {
             </div>
           ))}
       </div>
+      <AdsterraBanner size="rectangle" />
     </section>
     </RailedLayout>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RailedLayout } from "@/components/RailedLayout";
 import { CitationBox } from "@/components/CitationBox";
+import { AdsterraBanner } from "@/components/AdsterraBanner";
 
 export const metadata = {
   title: "FAQ — homelessness facts, citations, and how to use this site",
@@ -301,6 +302,7 @@ export default function FAQPage() {
           ))}
         </dl>
 
+        <AdsterraBanner size="rectangle" />
         <CitationBox title="FAQ — homelessness facts and citations" url="https://www.homelesshelp.net/faq" />
       </article>
     </RailedLayout>

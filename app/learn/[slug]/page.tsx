@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getArticleSlugs, getAllArticleMeta } from "@/lib/articles";
 import { RailedLayout } from "@/components/RailedLayout";
 import { CitationBox } from "@/components/CitationBox";
+import { AdsterraBanner } from "@/components/AdsterraBanner";
 
 interface Params {
   params: { slug: string };
@@ -43,6 +44,8 @@ export default async function ArticlePage({ params }: Params) {
         className="prose-article mt-8 max-w-none"
         dangerouslySetInnerHTML={{ __html: article.html }}
       />
+
+      <AdsterraBanner size="rectangle" />
 
       <CitationBox
         title={article.title}

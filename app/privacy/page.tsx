@@ -90,10 +90,10 @@ export default function PrivacyPage() {
             </a>
           </li>
           <li>
-            <strong className="text-ink">Google AdSense</strong> — site advertising. When ads are
-            active, Google may set cookies to deliver and measure ads. You can opt out (or in,
-            depending on jurisdiction) using our cookie banner. We block sensitive ad categories
-            including high-interest loans, gambling, alcohol, and weight-loss schemes.{" "}
+            <strong className="text-ink">Google AdSense and Adsterra</strong> — site advertising.
+            Ad scripts load only after you accept through our cookie banner. These providers may
+            use cookies to deliver and measure ads. You can change your choice with Manage cookies
+            in the footer.{" "}
             <a className="text-brand underline" href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">
               how Google uses ads data ↗
             </a>
